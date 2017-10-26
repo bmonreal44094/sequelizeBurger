@@ -1,0 +1,34 @@
+<h1 class="body-title">Burgers Are Yummy!</h1>
+
+<h5 class="body-title">Make burgers and eat them!</h5>
+<br>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-4">
+			{{#each burgers}}
+				{{#unless devour}}
+					<form method="GET" action="/update/{{id}}">
+						<p class="burgers"><button class="eat-it" type="submit">Eat It!</button>  {{id}}. {{burger_name}}</p>
+					</form>
+				{{/unless}} 
+			{{/each}}
+		</div>
+		<div class="col-xs-4 add-burger">
+			<form method="POST" action="/create" class="create-form">
+		  		<div class="form-group">
+		    		<label for="create-burger">Create a Burger:</label>
+		    		<input type="text" id="new-burger" name="name">
+		  		</div>
+		  		<button id="add-burger" type="submit">Add Burger</button>
+	  		</form>
+		</div>
+		<div class="col-xs-4">
+			{{#each burgers}}
+				{{#if devour}}
+					<p class="burgers">You hammered a {{burger_name}}</p>
+				{{/if}} 
+			{{/each}}
+		</div>
+	</div>
+</div>
